@@ -1,7 +1,7 @@
 name: Run github_events pipeline from github_events_dispatch.py
 'on':
   schedule:
-  - cron: '*/10 * * * *'
+  - cron: '0 0 1 1 *'
   workflow_dispatch: null
 env:
   PAT_REPO_TOKEN: ${{ secrets.PAT_REPO_TOKEN }}
