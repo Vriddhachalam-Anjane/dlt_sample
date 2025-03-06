@@ -1,10 +1,10 @@
 name: Run github_events pipeline from github_events_dispatch.py
 'on':
   schedule:
-  - cron: '*/30 * * * *'
+  - cron: '*/10 * * * *'
   workflow_dispatch: null
 env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  PAT_REPO_TOKEN: ${{ secrets.PAT_REPO_TOKEN }}
 jobs:
   maybe_skip:
     runs-on: ubuntu-latest

@@ -8,11 +8,11 @@ from typing import Any, Optional
     table_name=lambda i: i["type"],
     write_disposition="append",
 )
-def repo_events(last_created_at=dlt.sources.incremental("created_at"),github_token: Optional[str] = dlt.secrets.value):
+def repo_events(last_created_at=dlt.sources.incremental("created_at"),pat_repo_token: Optional[str] = dlt.secrets.value):
     url = "https://api.github.com/repos/Vriddhachalam-Anjane/dbt_self_for_django/events?per_page=100"
 
     while True:
-        response = requests.get(url, auth=HTTPBasicAuth('username', github_token))
+        response = requests.get(url, auth=HTTPBasicAuth('username', pat_repo_token))
         response.raise_for_status()
         yield response.json()
         # Stop requesting pages if the last element was already older than
